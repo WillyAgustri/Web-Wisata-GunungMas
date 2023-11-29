@@ -11,5 +11,6 @@
                 <p>Pariwisata Kuala Kurun</p>
             </h1>
         </div>
+        @include('sweetalert::alert')
     </body>
 @endsection

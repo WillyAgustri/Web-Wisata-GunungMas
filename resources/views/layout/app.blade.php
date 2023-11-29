@@ -58,7 +58,7 @@
 
                     <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end ">
                         <li class="">
-                            <a href="/">Beranda</a>
+                            <a href="{{ route('home') }}">Beranda</a>
                         </li>
                         <li class="has-childrens">
                             <a href="{{ route('wisata') }}">Wisata</a>
@@ -68,7 +68,7 @@
                         <li><a href="{{ route('contact') }}">Kontak</a></li>
                         <li>
                             <button class="btn btn-dark btn-sm"> <a class="text-white"
-                                    href="{{ route('login.admin') }}">LOGIN</a></button>
+                                    href="{{ route('login.index') }}">LOGIN</a></button>
                         </li>
                     </ul>
                     s

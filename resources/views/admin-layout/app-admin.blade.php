@@ -23,7 +23,7 @@
             <h1>
                 <a class="logo d-flex flex-column justify-content-center ">
                     <span class="text-center fa fa-1x fa-user-circle-o" aria-hidden="true"></span>
-                    <h4 class="text-center text-white" style="font-size:14px;">Hi,Admin</h4>
+                    <h4 class="text-center text-white" style="font-size:14px;">Hi,{{ auth()->user()->username }}</h4>
                 </a>
 
             </h1>
@@ -32,11 +32,13 @@
                     <a href="{{ route('home-dashboard') }}"><span class="fa fa-home"></span> Home</a>
                 </li>
                 <li>
-                    <a href="{{ route('kelola-admin') }}"><span class="fa fa-lock" aria-hidden="true"></span> Kelola
+                    <a href="{{ route('dashboard.admin.index') }}"><span class="fa fa-lock" aria-hidden="true"></span>
+                        Kelola
                         Admin</a>
                 </li>
                 <li>
-                    <a href="{{ route('kelola-wisata') }}"><span class="fa fa-industry" aria-hidden="true"></span>
+                    <a href="{{ route('dashboard.wisata.index') }}"><span class="fa fa-industry"
+                            aria-hidden="true"></span>
                         Kelola Wisata</a>
                 </li>
                 <li>
@@ -60,7 +62,8 @@
                             aria-hidden="true"></span>Pesan</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-sign-out" aria-hidden="true"></span> Keluar</a>
+                    <a href="{{ route('logout') }}"><span class="fa fa-sign-out" aria-hidden="true"></span>
+                        Keluar</a>
 
                 </li>
             </ul>
@@ -85,7 +88,8 @@
                                 <a class="nav-link text-white" href="#">Kelola Admin</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('kelola-wisata') }}">Kelola Wisata</a>
+                                <a class="nav-link text-white" href="{{ route('dashboard.wisata.index') }}">Kelola
+                                    Wisata</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="#">Kelola Galeri</a>
@@ -100,7 +104,7 @@
                                 <a class="nav-link text-white" href="#">Kelola Hotel</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Keluar</a>
+                                <a class="nav-link text-white" href="{{ route('logout') }}">Keluar</a>
                             </li>
                         </ul>
                     </div>

@@ -19,7 +19,6 @@
                     <thead class="text-center me-5">
                         <tr>
                             <th>ID</th>
-                            <th>Gambar</th>
                             <th>Nama</th>
                             <th>Latitude</th>
                             <th>Longitude</th>
@@ -29,62 +28,58 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="https://i.ibb.co/DR3sCwr/Tahura-Lapak-Jaru-1024x768.jpg" alt=""
-                                    style="max-width: 80%;">
-                            </td>
-                            <td>Gunung mas</td>
-                            <td>-2348234</td>
-                            <td>-23761264</td>
-                            <td>
-                                Kabupaten Gunung Mas terletak di Provinsi Kalimantan Tengah, Indonesia, dengan ibu kota
-                                Kuala Kurun. Wilayahnya ditandai oleh topografi beragam yang mencakup pegunungan dan hutan
-                                hujan tropis yang melimpah. Masyarakat Kabupaten Gunung Mas, termasuk Suku Dayak, memiliki
-                                budaya yang kaya, dan daerah ini memiliki potensi wisata alam yang menarik berkat keindahan
-                                alamnya.
-                            </td>
-                            <td>
-                                <li class="nav-item dropdown d-flex ">
-                                    <a class="nav-link dropdown-toggle   d-flex justify-content-end " href="#"
-                                        id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="fa fa-2x fa-wrench text-left" aria-hidden="true"></span>
-                                    </a>
-                                    <ul class="dropdown-menu shadow-sm " aria-labelledby="navbarDropdown">
-                                        <li>
-                                            <div class="text-center text-dark ">
-                                                <strong> Menu</strong>
-                                                <p><small>
-                                                        ID Data :
-                                                    </small></p>
-                                            </div>
-                                        </li>
-                                        <li class="dropdown-divider"></li>
-                                        <li>
-                                            <a class="dropdown-item " href="{{ route('edit-wisata') }}">
-                                                <i class="fa fa-pencil text-warning" aria-hidden="true"></i> Edit Data</a>
-                                        </li>
-                                        <li>
-                                            <form action="" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="dropdown-item" data-toggle="dropdown">
-                                                    <i class="fa fa-trash text-danger" aria-hidden="true"></i>
-                                                    Hapus Data</button>
-                                            </form>
+                        @foreach ($wisata_data as $item)
+                            <tr class="text-center">
+                                <td>{{ $item->Id_wisata }}</td>
+                                <td>{{ $item->Nama_wisata }}</td>
+                                <td>{{ $item->Latitude }}</td>
+                                <td>{{ $item->Longitude }}</td>
+                                <td>{{ $item->Des_wisata }}</td>
+                                <td>
+                                    <li class="nav-item dropdown d-block ">
+                                        <a class="nav-link dropdown-toggle   d-flex justify-content-end " href="#"
+                                            id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <span class="fa fa-2x fa-wrench text-left" aria-hidden="true"></span>
+                                        </a>
+                                        <ul class="dropdown-menu shadow-sm " aria-labelledby="navbarDropdown">
+                                            <li>
+                                                <div class="text-center text-dark ">
+                                                    <strong> Menu</strong>
+                                                    <p><small>
+                                                            ID Data : {{ $item->Id_wisata }}
+                                                        </small></p>
+                                                </div>
+                                            </li>
+                                            <li class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item "
+                                                    href="{{ route('edit-wisata', ['id_wisata' => $item->Id_wisata]) }}">
+                                                    <i class="fa fa-pencil text-warning" aria-hidden="true"></i> Edit
+                                                    Data</a>
+                                            </li>
+                                            <li>
+                                                <form
+                                                    action="{{ route('dashboard.wisata.destroy', ['wisatum' => $item->Id_wisata]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="dropdown-item" data-toggle="dropdown">
+                                                        <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                                        Hapus Data</button>
+                                                </form>
 
-                                        </li>
-                                    </ul>
-                                </li>
+                                            </li>
+                                        </ul>
+                                    </li>
 
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                     <tfoot>
-                        <tr>
+                        <tr class="text-center">
                             <th>ID</th>
-                            <th>Gambar</th>
                             <th>Nama</th>
                             <th>Latitude</th>
                             <th>Longitude</th>
@@ -93,6 +88,7 @@
                         </tr>
                     </tfoot>
                 </table>
+                {{ $wisata_data->links('pagination::bootstrap-5') }}
             </div>
 
         </div>

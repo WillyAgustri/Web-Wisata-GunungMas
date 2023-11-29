@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WisataController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::view('home', 'home')->name('home');
 // User Route
 Route::view('home/wisata', 'wisata')->name('wisata');
 Route::view('home/galeri', 'galeri')->name('galeri');
@@ -14,24 +14,31 @@ Route::view('home/kontak', 'contact')->name('contact');
 Route::view('home/tentang', 'tentang')->name('tentang');
 Route::view('home/galeri/detail', 'detail-galeri')->name('detail-galeri');
 
+// Login Route
+Route::get('', [LoginController::class, 'logout'])->name('logout');
+Route::resource('login', LoginController::class);
+
 // Admin Route
-Route::view('home/login-admin', 'login.login-admin')->name('login.admin');
-Route::view('dashboard/home', 'dashboard.home-admin')->name('home-dashboard');
-Route::view('dashboard/wisata', 'dashboard.kelola_wisata.kelola-wisata')->name('kelola-wisata');
-Route::view('dashboard/galeri', 'dashboard.kelola_galeri.kelola-galeri')->name('kelola-galeri');
-Route::view('dashboard/tentang', 'dashboard.kelola_tentang.kelola-tentang')->name('kelola-tentang');
-Route::view('dashboard/admin', 'dashboard.kelola_admin.kelola-admin')->name('kelola-admin');
-Route::view('dashboard/kontak', 'dashboard.kelola_kontak.kelola-kontak')->name('kelola-kontak');
-Route::view('dashboard/hotel', 'dashboard.kelola_hotel.kelola-hotel')->name('kelola-hotel');
-Route::view('dashboard/pesan', 'dashboard.pesan.kelola-pesan')->name('kelola-pesan');
+Route::group(['middleware' => ['CekLoginUser']], function () {
+    // Overview Admin
+    Route::view('dashboard/home', 'dashboard.home-admin')->name('home-dashboard');
+    Route::view('dashboard/wisata', 'dashboard.kelola_wisata.kelola-wisata')->name('kelola-wisata');
+    Route::view('dashboard/galeri', 'dashboard.kelola_galeri.kelola-galeri')->name('kelola-galeri');
+    Route::view('dashboard/tentang', 'dashboard.kelola_tentang.kelola-tentang')->name('kelola-tentang');
+    Route::view('dashboard/kontak', 'dashboard.kelola_kontak.kelola-kontak')->name('kelola-kontak');
+    Route::view('dashboard/hotel', 'dashboard.kelola_hotel.kelola-hotel')->name('kelola-hotel');
+    Route::view('dashboard/pesan', 'dashboard.pesan.kelola-pesan')->name('kelola-pesan');
 
-// CRUD ADMIN
-Route::view('dashboard/admin/tambah', 'dashboard.kelola_admin.tambah-admin')->name('tambah-admin');
-Route::view('dashboard/admin/edit', 'dashboard.kelola_admin.edit-admin')->name('edit-admin');
+    // CRUD ADMIN
+    Route::view('dashboard/admin/tambah', 'dashboard.kelola_admin.tambah-admin')->name('tambah-admin');
+    Route::get('dashboard/admin/{id_admin}/edit', [AdminController::class, 'edit_index'])->name('edit-admin');
+    Route::resource('dashboard/admin', AdminController::class)->names('dashboard.admin');
 
-// CRUD Wisata
-Route::view('dashboard/wisata/tambah', 'dashboard.kelola_wisata.tambah-wisata')->name('tambah-wisata');
-Route::view('dashboard/wisata/edit', 'dashboard.kelola_wisata.edit-wisata')->name('edit-wisata');
+    // CRUD Wisata
+    Route::get('dashboard/wisata/{id_wisata}/edit', [WisataController::class, 'edit_index'])->name('edit-wisata');
+    Route::view('dashboard/wisata/tambah', 'dashboard.kelola_wisata.tambah-wisata')->name('tambah-wisata');
+    Route::resource('dashboard/wisata', WisataController::class)->names('dashboard.wisata');
+});
 
 // CRUD Galeri
 Route::view('dashboard/galeri/tambah', 'dashboard.kelola_galeri.tambah-galeri')->name('tambah-galeri');

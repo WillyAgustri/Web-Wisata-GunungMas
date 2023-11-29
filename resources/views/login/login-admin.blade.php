@@ -30,15 +30,16 @@
                     <div class=" border-0 shadow rounded-3 my-5 mt-5">
                         <div class="card-body p-sm-5 mt-5">
                             <h5 class="card-title text-center mb-5 fw-light fs-5">Login Admin</h5>
-                            <form>
+                            <form action="{{ route('login.store') }}" method="POST">
+                                @csrf
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput"
-                                        placeholder="name@example.com">
+                                    <input type="text" class="form-control" id="username" placeholder="Username"
+                                        name="username" required>
                                     <label for="floatingInput">Email address</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingPassword"
-                                        placeholder="Password">
+                                    <input type="password" class="form-control" id="password" placeholder="Password"
+                                        name="password" required>
                                     <label for="floatingPassword">Password</label>
                                 </div>
 
@@ -54,6 +55,7 @@
                                         type="submit">Login</button>
                                 </div>
 
+
                                 <hr class="my-4">
                             </form>
                         </div>
@@ -61,5 +63,6 @@
                 </div>
             </div>
         </div>
+        @include('sweetalert::alert')
     </body>
 @endsection

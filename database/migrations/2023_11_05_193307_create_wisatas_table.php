@@ -13,9 +13,10 @@ return new class() extends Migration {
         Schema::create('tb_wisata', function (Blueprint $table) {
             $table->id('Id_wisata');
             $table->string('Nama_wisata');
-            $table->string('Des_wisata');
+            $table->text('Des_wisata');
             $table->unsignedBigInteger('Latitude');
             $table->unsignedBigInteger('Longitude');
+            $table->timestamps();
         });
     }
 

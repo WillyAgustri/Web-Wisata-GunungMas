@@ -14,8 +14,9 @@ return new class() extends Migration {
             $table->id('Id_hotel');
             $table->string('Nama_hotel', 40);
             $table->text('gambar');
-            $table->unsignedBigInteger('Latitude')->length(40);
+            $table->unsignedBigInteger('Latitude');
             $table->unsignedBigInteger('Longitude');
+            $table->timestamps();
         });
     }
 
