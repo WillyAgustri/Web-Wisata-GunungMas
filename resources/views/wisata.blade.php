@@ -45,114 +45,33 @@
 
         <div class="sections section-properties">
             <div class="container">
+
+
                 <div class="row mb-3">
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                        <div class="property-item">
-                            <a href="{{ route('detail_wisata') }}" class="img">
-                                <img src="https://i.ibb.co/LpVNqZG/air-terjun-bawin-kameloh.jpg" alt="Image"
-                                    class="img-fluid" />
-                            </a>
-                            <div class="property-content">
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                        Kurun</span>
-                                    <span class="city d-block mb-3">Air Terjun Bawin Kameloh</span>
+                    @foreach ($get_wisata_data as $wisata_data)
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <div class="property-item">
+                                <a href="{{ route('wisata.detail', ['id_wisata' => $wisata_data->Id_wisata]) }}"
+                                    class="img">
+                                    <img src="{{ asset('images/' . $wisata_data->Foto) }}" alt="Image"
+                                        class="img-fluid" />
+                                </a>
+                                <div class="property-content">
+                                    <div>
+                                        <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
+                                            Kurun</span>
+                                        <span class="city d-block mb-3">{{ $wisata_data->Nama_wisata }}</span>
 
-                                    <a href="{{ route('detail_wisata') }}" class="btn btn-primary py-2 px-3">Lihat
-                                        Detail</a>
+                                        <a href="{{ route('wisata.detail', ['id_wisata' => $wisata_data->Id_wisata]) }}"
+                                            class="btn btn-primary py-2 px-3">Lihat
+                                            Detail</a>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- .item -->
                         </div>
-                        <!-- .item -->
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                        <div class="property-item">
-                            <a href="{{ route('detail_wisata') }}" class="img">
-                                <img src="https://i.ibb.co/DR3sCwr/Tahura-Lapak-Jaru-1024x768.jpg" alt="Image"
-                                    class="img-fluid" />
-                            </a>
+                    @endforeach
 
-                            <div class="property-content">
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                        Kurun</span>
-                                    <span class="city d-block mb-3">Tahura lapak Jaru Kurun</span>
-
-
-
-                                    <a href="{{ route('detail_wisata') }}" class="btn btn-primary py-2 px-3">Lihat
-                                        Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                        <div class="property-item">
-                            <a href="{{ route('detail_wisata') }}" class="img">
-                                <img src="https://i.ibb.co/6PX4SHg/Batu-Mahasur3.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                        Kurun</span>
-                                    <span class="city d-block mb-3">Air Terjun Batu Mahasur</span>
-
-
-
-                                    <a href="{{ route('detail_wisata') }}" class="btn btn-primary py-2 px-3">Lihat
-                                        Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-                    </div>
-
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                        <div class="property-item">
-                            <a href="{{ route('detail_wisata') }}" class="img">
-                                <img src="https://i.ibb.co/BCB2bSc/Batu-suli.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                        Kurun</span>
-                                    <span class="city d-block mb-3">Batu Suli</span>
-
-
-
-                                    <a href="{{ route('detail_wisata') }}" class="btn btn-primary py-2 px-3">Lihat
-                                        Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-                    </div>
-
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 mb-5">
-                        <div class="property-item">
-                            <a href="{{ route('detail_wisata') }}" class="img">
-                                <img src="https://i.ibb.co/WD5F8DV/betang-toyoi.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                        Kurun</span>
-                                    <span class="city d-block mb-3">
-                                        Rumah Adat Betang Toyoi</span>
-
-
-
-                                    <a href="{{ route('detail_wisata') }}" class="btn btn-primary py-2 px-3">Lihat
-                                        Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-                    </div>
                 </div>
             </div>
     </body>

@@ -45,108 +45,27 @@
         <div class="sections section-properties">
             <div class="container ">
                 <div class="container">
-                    <div class="p-5 d-flex justify-content-center">
-                        <div class="property-item" style="width: 80%; height:80%"">
-                            <a href="property-single.html" class="img">
-                                <img src="https://i.ibb.co/LpVNqZG/air-terjun-bawin-kameloh.jpg" alt="Image"
-                                    class="img-fluid" />
-                            </a>
-                            <div class="property-content">
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                        Kurun</span>
-                                    <span class="city d-block mb-3">Air Terjun Bawin Kameloh</span>
+                    @foreach ($get_galeri_data as $item)
+                        <div class="p-5 d-flex justify-content-center">
+                            <div class="property-item" style="width: 80%; height:80%"">
+                                <a href="{{ route('galeri.detail', ['id_wisata' => $item->Id_wisata]) }}" class="img">
+                                    <img src="{{ asset('images/' . $item->Foto) }}" alt="Image" class="img-fluid" />
+                                </a>
+                                <div class="property-content">
+                                    <div>
+                                        <span class="d-block mb-2 text-black-50">Kalimantan Tengah,Gunung Mas</span>
+                                        <span class="city d-block mb-3">{{ $item->Nama_wisata }}</span>
 
-                                    <a href="property-single.html" class="btn btn-primary py-2 px-3">Lihat Galeri</a>
+                                        <a href="{{ route('galeri.detail', ['id_wisata' => $item->Id_wisata]) }}"
+                                            class="btn btn-primary py-2 px-3">Lihat
+                                            Galeri</a>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- .item -->
                         </div>
-                        <!-- .item -->
-                    </div>
-                    <div class="p-5 d-flex justify-content-center">
-                        <div class="property-item " style="width: 80%; height:80%">
-                            <a href="property-single.html" class="img">
-                                <img src="https://i.ibb.co/DR3sCwr/Tahura-Lapak-Jaru-1024x768.jpg" alt="Image"
-                                    class="img-fluid" />
-                            </a>
+                    @endforeach
 
-                            <div class="property-content">
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                        Kurun</span>
-                                    <span class="city d-block mb-3">Tahura lapak Jaru Kurun</span>
-
-
-
-                                    <a href="property-single.html" class="btn btn-primary py-2 px-3">Lihat Galeri</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-                    </div>
-                    <div class="p-5 d-flex justify-content-center">
-                        <div class="property-item" style="width: 80%; height:80%">
-                            <a href="property-single.html" class="img">
-                                <img src="https://i.ibb.co/6PX4SHg/Batu-Mahasur3.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                        Kurun</span>
-                                    <span class="city d-block mb-3">Air Terjun Batu Mahasur</span>
-
-
-
-                                    <a href="property-single.html" class="btn btn-primary py-2 px-3">Lihat Galeri</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-                    </div>
-
-                    <div class="p-5 d-flex justify-content-center">
-                        <div class="property-item" style="width: 80%; height:80%">
-                            <a href="property-single.html" class="img">
-                                <img src="https://i.ibb.co/BCB2bSc/Batu-suli.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                        Kurun</span>
-                                    <span class="city d-block mb-3">Batu Suli</span>
-
-
-
-                                    <a href="property-single.html" class="btn btn-primary py-2 px-3">Lihat Galeri</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-                    </div>
-
-                    <div class="p-5 d-flex justify-content-center">
-                        <div class="property-item" style="width: 80%; height:80%">
-                            <a href="property-single.html" class="img">
-                                <img src="https://i.ibb.co/WD5F8DV/betang-toyoi.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                        Kurun</span>
-                                    <span class="city d-block mb-3">
-                                        Rumah Adat Betang Toyoi</span>
-
-
-
-                                    <a href="property-single.html" class="btn btn-primary py-2 px-3">Lihat Galeri</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-                    </div>
                 </div>
             </div>
         </div>

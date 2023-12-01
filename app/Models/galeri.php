@@ -9,11 +9,19 @@ class galeri extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'Id_galeri';
+    protected $table = 'tb_galeri';
 
     protected $fillable = [
-        'Id_galeri',
         'Id_wisata',
         'Nama_galeri',
-        
+        'Foto',
     ];
+
+    public function wisata()
+    {
+        return $this->belongsTo(Wisata::class, 'Id_wisata');
+    }
+
+    public $timestamps = false;
 }

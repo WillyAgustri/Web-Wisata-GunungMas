@@ -42,23 +42,27 @@
                         Kelola Wisata</a>
                 </li>
                 <li>
-                    <a href="{{ route('kelola-galeri') }}"><span class="fa fa-picture-o" aria-hidden="true"></span>
+                    <a href="{{ route('dashboard.galeri.index') }}"><span class="fa fa-picture-o"
+                            aria-hidden="true"></span>
                         Kelola Galeri</a>
                 </li>
                 <li>
-                    <a href="{{ route('kelola-tentang') }}"><span class="fa fa-info-circle" aria-hidden="true"></span>
+                    <a href="{{ route('dashboard.tentang.index') }}"><span class="fa fa-info-circle"
+                            aria-hidden="true"></span>
                         Kelola Tentang</a>
                 </li>
                 <li>
-                    <a href="{{ route('kelola-kontak') }}"><span class="fa fa-phone" aria-hidden="true"></span> Kelola
+                    <a href="{{ route('dashboard.kontak.index') }}"><span class="fa fa-phone" aria-hidden="true"></span>
+                        Kelola
                         Kontak</a>
                 </li>
                 <li>
-                    <a href="{{ route('kelola-hotel') }}"><span class="fa fa-bed" aria-hidden="true"></span> Kelola
+                    <a href="{{ route('dashboard.hotel.index') }}"><span class="fa fa-bed" aria-hidden="true"></span>
+                        Kelola
                         Hotel</a>
                 </li>
                 <li>
-                    <a href="{{ route('kelola-pesan') }}"><span class="fa fa-envelope-o"
+                    <a href="{{ route('dashboard.pesan.index') }}"><span class="fa fa-envelope-o"
                             aria-hidden="true"></span>Pesan</a>
                 </li>
                 <li>
@@ -85,23 +89,20 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link text-white" href="#">Kelola Admin</a>
+                                <a class="nav-link text-white" href="{{ route('home.index') }}">Beranda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('dashboard.wisata.index') }}">Kelola
+                                <a class="nav-link text-white" href="{{ route('home.wisata.index') }}">
                                     Wisata</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Kelola Galeri</a>
+                                <a class="nav-link text-white" href="{{ route('home.galeri.index') }}">Galeri</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Kelola Tentang</a>
+                                <a class="nav-link text-white" href="{{ route('home.tentang.index') }}">Tentang</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Kelola Kontak</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Kelola Hotel</a>
+                                <a class="nav-link text-white" href="{{ route('home.kontak.index') }}">Kontak</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('logout') }}">Keluar</a>

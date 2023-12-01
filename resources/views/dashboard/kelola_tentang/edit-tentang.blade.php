@@ -4,7 +4,9 @@
     <div class="container-fluid costum-container">
         <div class="container mt-5">
             <div class="card p-3">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.tentang.update', ['tentang' => $tentang_data->Id_tentang]) }}"
+                    method="POST" enctype="multipart/form-data">
+                    @method('PUT')
                     @csrf
                     <div class="form-body">
                         <div class="text-center">
@@ -12,12 +14,13 @@
                         </div>
                         <div class="form-group">
                             <label for="">Deskripsi</label>
-                            <textarea type="text" class="form-control form-control-sm mb-3" rows="10" value="" name="nama"></textarea>
+                            <textarea type="text" class="form-control form-control-sm mb-3" rows="10" name="Des_Tentang">{{ $tentang_data->Des_Tentang }}</textarea>
                         </div>
 
                     </div>
                     <button class="btn btn-md btn-primary mt-4 text-white">Edit Paragraf</button>
-                    <a class="btn btn-md btn-secondary mt-4 text-white" href="{{ route('kelola-tentang') }}">Kembali</a>
+                    <a class="btn btn-md btn-secondary mt-4 text-white"
+                        href="{{ route('dashboard.tentang.index') }}">Kembali</a>
             </div>
             </form>
         </div>

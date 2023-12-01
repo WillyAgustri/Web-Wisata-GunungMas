@@ -15,8 +15,8 @@ return new class() extends Migration {
             $table->unsignedBigInteger('Id_wisata');
             $table->string('Nama_galeri');
             $table->text('Foto');
-
             $table->foreign('Id_wisata')->references('Id_wisata')->on('tb_wisata')->cascadeOnDelete();
+            $table->timestamps();
         });
     }
 

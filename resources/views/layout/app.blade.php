@@ -58,17 +58,25 @@
 
                     <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end ">
                         <li class="">
-                            <a href="{{ route('home') }}">Beranda</a>
+                            <a href="{{ route('home.index') }}">Beranda</a>
                         </li>
                         <li class="has-childrens">
-                            <a href="{{ route('wisata') }}">Wisata</a>
+                            <a href="{{ route('home.wisata.index') }}">Wisata</a>
                         </li>
-                        <li><a href="{{ route('galeri') }}">Galeri</a></li>
-                        <li><a href="{{ route('tentang') }}">Tentang</a></li>
-                        <li><a href="{{ route('contact') }}">Kontak</a></li>
+                        <li><a href="{{ route('home.galeri.index') }}">Galeri</a></li>
+                        <li><a href="{{ route('home.tentang.index') }}">Tentang</a></li>
+                        <li><a href="{{ route('home.kontak.index') }}">Kontak</a></li>
+
+
                         <li>
-                            <button class="btn btn-dark btn-sm"> <a class="text-white"
-                                    href="{{ route('login.index') }}">LOGIN</a></button>
+                            @if (Auth::user())
+                                <button class="btn btn-dark btn-sm"> <a class="text-white"
+                                        href="{{ route('home-dashboard') }}">Dashboard</a></button>
+                            @else
+                                <button class="btn btn-dark btn-sm"> <a class="text-white"
+                                        href="{{ route('login.index') }}">LOGIN</a></button>
+                            @endif
+
                         </li>
                     </ul>
                     s

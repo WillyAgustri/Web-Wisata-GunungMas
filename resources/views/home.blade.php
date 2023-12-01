@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-lg-6 text-lg-end">
                     <p>
-                        <a href="#" target="_blank" class="btn btn-primary text-white py-3 px-4">Lihat
+                        <a href="{{ route('home.wisata.index') }}" class="btn btn-primary text-white py-3 px-4">Lihat
                             Selengkapnya</a>
                     </p>
                 </div>
@@ -46,105 +46,32 @@
                 <div class="col-12  ">
                     <div class="property-slider-wrap ">
                         <div class="property-slider ">
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="https://i.ibb.co/LpVNqZG/air-terjun-bawin-kameloh.jpg" alt="Image"
-                                        class="img-fluid" />
-                                </a>
-                                <div class="property-content">
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                            Kurun</span>
-                                        <span class="city d-block mb-3">Air Terjun Bawin Kameloh</span>
 
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">Lihat
-                                            Detail</a>
+                            @foreach ($get_wisata_data as $wisata_data)
+                                <div class="property-item">
+                                    <a href="{{ route('wisata.detail', ['id_wisata' => $wisata_data->Id_wisata]) }}"
+                                        class="img">
+                                        <img src="{{ asset('images/' . $wisata_data->Foto) }}" alt="Image"
+                                            class="img-fluid rounded"
+                                            style="object-fit: cover; width: 100%; height: 100%;" />
+
+                                    </a>
+                                    <div class="property-content">
+                                        <div>
+                                            <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Gunung Mas</span>
+                                            <span class="city d-block mb-3">{{ $wisata_data->Nama_wisata }}</span>
+
+                                            <a href="{{ route('wisata.detail', ['id_wisata' => $wisata_data->Id_wisata]) }}"
+                                                class="btn btn-primary py-2 px-3">Lihat
+                                                Detail</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- .item -->
+                                <!-- .item -->
+                            @endforeach
 
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="https://i.ibb.co/DR3sCwr/Tahura-Lapak-Jaru-1024x768.jpg" alt="Image"
-                                        class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                            Kurun</span>
-                                        <span class="city d-block mb-3">Tahura lapak Jaru Kurun</span>
-
-
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">Lihat
-                                            Detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
-
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="https://i.ibb.co/6PX4SHg/Batu-Mahasur3.jpg" alt="Image"
-                                        class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                            Kurun</span>
-                                        <span class="city d-block mb-3">Air Terjun Batu Mahasur</span>
-
-
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">Lihat
-                                            Detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="https://i.ibb.co/BCB2bSc/Batu-suli.jpg" alt="Image" class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                            Kurun</span>
-                                        <span class="city d-block mb-3">Batu Suli</span>
-
-
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">Lihat
-                                            Detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="https://i.ibb.co/WD5F8DV/betang-toyoi.jpg" alt="Image" class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">Kalimantan Tengah, Kuala
-                                            Kurun</span>
-                                        <span class="city d-block mb-3">
-                                            Rumah Adat Betang Toyoi</span>
-
-
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">Lihat
-                                            Detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
                         </div>
+
 
                         <div id="property-nav" class="controls" tabindex="0" aria-label="Carousel Navigation">
                             <span class="prev" data-controls="prev" aria-controls="property" tabindex="-1">Prev</span>
@@ -172,47 +99,36 @@
                     </div>
                     <div class="col-lg-6 text-lg-end">
                         <p>
-                            <a href="#" target="_blank" class="btn btn-primary text-white py-3 px-4">Lihat
+                            <a href="{{ route('home.galeri.index') }}" class="btn btn-primary text-white py-3 px-4">Lihat
                                 Selengkapnya</a>
                         </p>
                     </div>
                 </div>
 
                 <div class="row">
+                    @foreach ($get_galeri_data as $index => $galeri_data)
+                        <div class=
+                        "property-item col-md-4
+                            @if ($index == 1) mt-lg-5 @endif
+                            @if ($index == 4) mt-lg-5 @endif
+                        shadow-lg p-1"
+                            data-aos="fade-up" data-aos-delay="0">
+                            <img src="{{ asset('images/' . $galeri_data->Foto) }}" alt="Image" class="img-fluid" />
+                        </div>
+                    @endforeach
 
-                    <div class="property-item col-md-4 shadow-lg p-1" data-aos="fade-up" data-aos-delay="0">
-                        <img src="https://i.ibb.co/LpVNqZG/air-terjun-bawin-kameloh.jpg" alt="Image"
-                            class="img-fluid" />
-                    </div>
-                    <div class="property-item col-md-4 mt-lg-5 shadow-lg p-1" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://i.ibb.co/BCB2bSc/Batu-suli.jpg" alt="Image" class="img-fluid" />
-                    </div>
-                    <div class="property-item col-md-4 shadow-lg p-1" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://i.ibb.co/WD5F8DV/betang-toyoi.jpg" alt="Image" class="img-fluid" />
-                    </div>
 
-                    <div class="property-item col-md-4 shadow-lg p-1" data-aos="fade-up" data-aos-delay="0">
-                        <img src="https://i.ibb.co/6PX4SHg/Batu-Mahasur3.jpg" alt="Image" class="img-fluid" />
-                    </div>
-                    <div class="property-item col-md-4 mt-lg-5 shadow-lg p-1" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://i.ibb.co/DR3sCwr/Tahura-Lapak-Jaru-1024x768.jpg" alt="Image"
-                            class="img-fluid" />
-                    </div>
-                    <div class="property-item col-md-4 shadow-lg p-1" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://i.ibb.co/LpVNqZG/air-terjun-bawin-kameloh.jpg" alt="Image"
-                            class="img-fluid" />
-                    </div>
                 </div>
                 <div class="row section-counter mt-5 d-flex justify-content-center">
                     <div class="col-6 col-sm-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
                         <div class="counter-wrap mb-5 mb-lg-0 text-center">
-                            <span class="number"><span class="countup text-primary ">5</span></span>
+                            <span class="number"><span class="countup text-primary ">{{ $total_wisata_data }}</span></span>
                             <span class="caption text-black-50">Tempat Wisata</span>
                         </div>
                     </div>
                     <div class="col-6 col-sm-6 col-md-6 col-lg-3 " data-aos="fade-up" data-aos-delay="400">
                         <div class="counter-wrap mb-5 mb-lg-0 text-center">
-                            <span class="number"><span class="countup text-primary">50</span></span>
+                            <span class="number"><span class="countup text-primary">{{ $total_galeri_data }}</span></span>
                             <span class="caption text-black-50">Galeri</span>
                         </div>
                     </div>
@@ -228,7 +144,7 @@
                 <div class="col-lg-7 mx-auto text-center">
                     <h2 class="mb-4">Ayo Datang ke Tempat Wisata Gunung Mas</h2>
                     <p>
-                        <a href="{{ route('wisata') }}" class="btn btn-primary text-white py-3 px-4">Lihat Tempat
+                        <a href="{{ route('home.wisata.index') }}" class="btn btn-primary text-white py-3 px-4">Lihat Tempat
                             Wisata</a>
                     </p>
                 </div>

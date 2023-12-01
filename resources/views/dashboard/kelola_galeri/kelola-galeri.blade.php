@@ -20,109 +20,80 @@
                         <tr>
                             <th>ID Galeri</th>
                             <th>ID Wisata</th>
+                            <th>Nama Wisata</th>
                             <th>Gambar</th>
                             <th>Aksi</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td class="text-center">
-                                <img src="https://i.ibb.co/DR3sCwr/Tahura-Lapak-Jaru-1024x768.jpg" alt=""
-                                    style="max-width: 20%;">
-                            </td>
+                        @foreach ($galeri_data as $item)
+                            <tr>
+                                <td>{{ $item->Id_galeri }}</td>
+                                <td>{{ $item->Id_wisata }}</td>
+                                <td>{{ $item->Nama_galeri }}</td>
+                                <td class="text-center">
+                                    @if ($item->Foto == 'Tidak Ada Foto')
+                                        {{ $item->Foto }}
+                                    @else
+                                        <img src="{{ asset('images/' . $item->Foto) }}" style="height: 20%;width:10%;">
+                                    @endif
 
-                            <td>
-                                <li class="nav-item dropdown d-flex ">
-                                    <a class="nav-link dropdown-toggle   d-flex justify-content-end " href="#"
-                                        id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="fa fa-2x fa-wrench text-left" aria-hidden="true"></span>
-                                    </a>
-                                    <ul class="dropdown-menu shadow-sm " aria-labelledby="navbarDropdown">
-                                        <li>
-                                            <div class="text-center text-dark ">
-                                                <strong> Menu</strong>
-                                                <p><small>
-                                                        ID Data :
-                                                    </small></p>
-                                            </div>
-                                        </li>
-                                        <li class="dropdown-divider"></li>
-                                        <li>
-                                            <a class="dropdown-item " href="{{ route('edit-galeri') }}">
-                                                <i class="fa fa-pencil text-warning" aria-hidden="true"></i> Edit Data</a>
-                                        </li>
-                                        <li>
-                                            <form action="" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="dropdown-item" data-toggle="dropdown">
-                                                    <i class="fa fa-trash text-danger" aria-hidden="true"></i>
-                                                    Hapus Data</button>
-                                            </form>
+                                </td>
+                                <td>
+                                    <li class="nav-item dropdown d-block ">
+                                        <a class="nav-link dropdown-toggle   d-flex justify-content-end " href="#"
+                                            id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <span class="fa fa-2x fa-wrench text-left" aria-hidden="true"></span>
+                                        </a>
+                                        <ul class="dropdown-menu shadow-sm " aria-labelledby="navbarDropdown">
+                                            <li>
+                                                <div class="text-center text-dark ">
+                                                    <strong> Menu</strong>
+                                                    <p><small>
+                                                            ID Data : {{ $item->Id_wisata }}
+                                                        </small></p>
+                                                </div>
+                                            </li>
+                                            <li class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item "
+                                                    href="{{ route('edit-galeri', ['id_galeri' => $item->Id_galeri]) }}">
+                                                    <i class="fa fa-pencil text-warning" aria-hidden="true"></i> Edit
+                                                    Data</a>
+                                            </li>
+                                            <li>
+                                                <form
+                                                    action="{{ route('dashboard.galeri.destroy', ['galeri' => $item->Id_galeri]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="dropdown-item" data-toggle="dropdown">
+                                                        <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                                        Hapus Data</button>
+                                                </form>
 
-                                        </li>
-                                    </ul>
-                                </li>
+                                            </li>
+                                        </ul>
+                                    </li>
 
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>3</td>
-                            <td class="text-center">
-                                <img src="https://i.ibb.co/MC8TmgY/Batu-Mahasur.jpg" alt="" style="max-width: 20%;">
-                            </td>
-
-                            <td>
-                                <li class="nav-item dropdown d-flex ">
-                                    <a class="nav-link dropdown-toggle   d-flex justify-content-end " href="#"
-                                        id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="fa fa-2x fa-wrench text-left" aria-hidden="true"></span>
-                                    </a>
-                                    <ul class="dropdown-menu shadow-sm " aria-labelledby="navbarDropdown">
-                                        <li>
-                                            <div class="text-center text-dark ">
-                                                <strong> Menu</strong>
-                                                <p><small>
-                                                        ID Data :
-                                                    </small></p>
-                                            </div>
-                                        </li>
-                                        <li class="dropdown-divider"></li>
-                                        <li>
-                                            <a class="dropdown-item " href="">
-                                                <i class="fa fa-pencil text-warning" aria-hidden="true"></i> Edit Data</a>
-                                        </li>
-                                        <li>
-                                            <form action="" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="dropdown-item" data-toggle="dropdown">
-                                                    <i class="fa fa-trash text-danger" aria-hidden="true"></i>
-                                                    Hapus Data</button>
-                                            </form>
-
-                                        </li>
-                                    </ul>
-                                </li>
-
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                     <tfoot class="text-center">
                         <tr>
                             <th>ID Foto</th>
                             <th>ID Wisata</th>
+                            <th>Nama Wisata</th>
                             <th>Gambar</th>
                             <th>Aksi</th>
 
                         </tr>
                     </tfoot>
                 </table>
+                {{ $galeri_data->links('pagination::bootstrap-5') }}
             </div>
 
         </div>

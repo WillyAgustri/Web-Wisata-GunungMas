@@ -12,7 +12,8 @@ return new class() extends Migration {
     {
         Schema::create('tb_tentang', function (Blueprint $table) {
             $table->id('Id_tentang');
-            $table->string('Des_Tentang', 350);
+            $table->text('Des_Tentang');
+            $table->timestamps();
         });
     }
 

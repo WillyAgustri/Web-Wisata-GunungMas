@@ -30,63 +30,60 @@
                         <div class="contact-info">
                             <div class="address mt-2">
                                 <i class="icon-room ">
-                                    <i class="fa-solid fa-location-dot"></i>
+                                    <i class="far fa-user"></i>
                                 </i>
-                                <h4 class="mb-2">Lokasi:</h4>
+                                <h4 class="mb-2">Nama :</h4>
                                 <p>
-                                    Jln.Kuala Kurun
-                                    <br>
-                                    Kuala Kurun, Gunung Mas
+                                    {{ $get_kontak_data->Nama_Kontak }}
+
                                 </p>
                             </div>
                             <div class="open-hours mt-4">
                                 <i class="icon-clock-o">
-                                    <i class="fa-regular fa-clock"></i>
+                                    <i class="far fa-envelope"></i>
                                 </i>
-                                <h4 class="mb-2">Jam Buka:</h4>
+                                <h4 class="mb-2">Email :</h4>
                                 <p>
-                                    Senin-Jumat:
-                                    <br>
-                                    8:00 AM - 17.00 PM
+                                    {{ $get_kontak_data->Email }}
                                 </p>
                             </div>
                             <div class="email mt-4">
                                 <i class="icon-envelope">
-                                    <i class="fa-regular fa-envelope"></i>
+                                    <i class="fas fa-mobile-alt"></i>
                                 </i>
-                                <h4 class="mb-2">Email:</h4>
-                                <p>InfoWisataGunungMas@gmail.com</p>
+                                <h4 class="mb-2">Nomor Telepon:</h4>
+                                <p>{{ $get_kontak_data->No_telp }}</p>
                             </div>
-                            <div class="phone mt-4">
-                                <i class="icon-phone">
-                                    <i class="fa-solid fa-phone" style="color: #ffffff;"></i>
-                                </i>
-                                <h4 class="mb-2">Call:</h4>
-                                <p>+6289691212015</p>
+
+                            <div class="mt-4 ">
+                                {{ $get_kontak_data->Ket }}
                             </div>
                         </div>
                     </div>
                     <div class="col input-form">
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Nama</label>
-                            <input type="text" class="form-control mb-2" name="username" id=""
-                                placeholder="Nama Anda">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control mb-2" name="email" id=""
-                                placeholder="example@gmail.com">
+                        <form action="{{ route('home.kontak.store') }}" method="post">
+                            @csrf
                             <div class="mb-3">
-                                <label for="pesan" class="form-label">Pesan Singkat</label>
-                                <textarea class="form-control" name="pesan" id="" rows="3" placeholder="Isi Pesan Singkat"></textarea>
-                            </div>
+                                <label for="Nama" class="form-label">Nama</label>
+                                <input type="text" class="form-control mb-2" name="Nama" placeholder="Nama Anda">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control mb-2" name="Email"
+                                    placeholder="example@gmail.com">
+                                <div class="mb-3">
+                                    <label for="pesan" class="form-label">Pesan Singkat</label>
+                                    <textarea class="form-control" name="Ket" rows="3" placeholder="Isi Pesan Singkat"></textarea>
+                                </div>
 
-                            <button type="button" class="btn btn-sm btn-primary">Kirim</button>
-                        </div>
+                                <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+
             </div>
         </div>
         </div>
-
+        @include('sweetalert::alert')
 
     </body>
 @endsection

@@ -18,12 +18,12 @@ class AdminSeeder extends Seeder
                 'password' => bcrypt('admin'),
             ],
             [
-                'username' => 'user',
-                'password' => bcrypt('user'),
+                'username' => 'ivena',
+                'password' => bcrypt('ivena'),
             ],
             ];
 
-        foreach ($user as $key => $value) {
+        foreach ($user as $value) {
             admin::create($value);
         }
     }

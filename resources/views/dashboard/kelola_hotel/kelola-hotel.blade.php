@@ -17,7 +17,7 @@
                 <table id="example1" class="table  table-bordered table-striped  " style="font-size: 10dp">
                     <thead class="text-center me-5">
                         <tr>
-                            <th>ID</th>
+                            <th>ID Hotel</th>
                             <th>Nama</th>
                             <th>Gambar</th>
                             <th>Latitude</th>
@@ -26,51 +26,62 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
+                        @foreach ($hotel_data as $item)
+                            <tr>
+                                <td>{{ $item->Id_hotel }}</td>
 
-                            <td>Gunung mas</td>
-                            <td class="text-center">
-                                <img src="https://i.ibb.co/DR3sCwr/Tahura-Lapak-Jaru-1024x768.jpg" alt=""
-                                    style="max-width: 30%;">
-                            </td>
-                            <td>-2348234</td>
-                            <td>-23761264</td>
-                            <td>
-                                <li class="nav-item dropdown d-flex ">
-                                    <a class="nav-link dropdown-toggle   d-flex justify-content-end " href="#"
-                                        id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="fa fa-2x fa-wrench text-left" aria-hidden="true"></span>
-                                    </a>
-                                    <ul class="dropdown-menu shadow-sm " aria-labelledby="navbarDropdown">
-                                        <li>
-                                            <div class="text-center text-dark ">
-                                                <strong> Menu</strong>
-                                                <p><small>
-                                                        ID Data :
-                                                    </small></p>
-                                            </div>
-                                        </li>
-                                        <li class="dropdown-divider"></li>
-                                        <li>
-                                            <a class="dropdown-item " href="{{ route('edit-hotel') }}">
-                                                <i class="fa fa-pencil text-warning" aria-hidden="true"></i> Edit Data</a>
-                                        </li>
-                                        <li>
-                                            <form action="" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="dropdown-item" data-toggle="dropdown">
-                                                    <i class="fa fa-trash text-danger" aria-hidden="true"></i>
-                                                    Hapus Data</button>
-                                            </form>
+                                <td>{{ $item->Nama_hotel }}</td>
+                                <td class="text-center">
+                                    @if ($item->gambar == 'Tidak Ada Foto')
+                                        {{ $item->gambar }}
+                                    @else
+                                        <img src="{{ asset('images/' . $item->gambar) }}" style="height: 50px;width:100px;">
+                                    @endif
 
-                                        </li>
-                                    </ul>
-                                </li>
+                                </td>
+                                <td>{{ $item->Latitude }}</td>
+                                <td>{{ $item->Longitude }}</td>
+                                <td>
+                                    <li class="nav-item dropdown d-block ">
+                                        <a class="nav-link dropdown-toggle   d-flex justify-content-end " href="#"
+                                            id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <span class="fa fa-2x fa-wrench text-left" aria-hidden="true"></span>
+                                        </a>
+                                        <ul class="dropdown-menu shadow-sm " aria-labelledby="navbarDropdown">
+                                            <li>
+                                                <div class="text-center text-dark ">
+                                                    <strong> Menu</strong>
+                                                    <p><small>
+                                                            ID Data : {{ $item->Id_hotel }}
+                                                        </small></p>
+                                                </div>
+                                            </li>
+                                            <li class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item "
+                                                    href="{{ route('edit-hotel', ['id_hotel' => $item->Id_hotel]) }}">
+                                                    <i class="fa fa-pencil text-warning" aria-hidden="true"></i> Edit
+                                                    Data</a>
+                                            </li>
+                                            <li>
+                                                <form
+                                                    action="{{ route('dashboard.hotel.destroy', ['hotel' => $item->Id_hotel]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="dropdown-item" data-toggle="dropdown">
+                                                        <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                                        Hapus Data</button>
+                                                </form>
 
-                            </td>
-                        </tr>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                     <tfoot class="text-center">
                         <tr>
@@ -83,6 +94,7 @@
                         </tr>
                     </tfoot>
                 </table>
+                {{ $hotel_data->links('pagination::bootstrap-5') }}
             </div>
 
         </div>

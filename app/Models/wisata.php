@@ -19,4 +19,9 @@ class wisata extends Model
         'Latitude',
         'Longitude',
     ];
+
+    public function galeri()
+    {
+        return $this->hasMany(Galeri::class, 'Id_wisata');
+    }
 }

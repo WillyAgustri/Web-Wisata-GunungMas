@@ -19,7 +19,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Oldpassowrd">Password Lama</label>
-                            <input type="text" class="form-control form-control-sm mb-3" name="Oldpassword"
+                            <input type="password" class="form-control form-control-sm mb-3" name="Oldpassword"
                                 placeholder="Password Lama">
                         </div>
                         <div class="form-group">

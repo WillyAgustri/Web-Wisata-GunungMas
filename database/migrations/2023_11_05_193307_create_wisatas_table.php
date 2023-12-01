@@ -14,8 +14,8 @@ return new class() extends Migration {
             $table->id('Id_wisata');
             $table->string('Nama_wisata');
             $table->text('Des_wisata');
-            $table->unsignedBigInteger('Latitude');
-            $table->unsignedBigInteger('Longitude');
+            $table->string('Latitude');
+            $table->string('Longitude');
             $table->timestamps();
         });
     }

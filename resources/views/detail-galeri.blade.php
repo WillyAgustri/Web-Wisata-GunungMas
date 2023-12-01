@@ -22,21 +22,16 @@
     </div>
 
     <h2 class="font-weight-bold text-primary  text-center py-4 ml-2">
-        Detail Galeri Batu Mahasur
+        Detail Galeri {{ $get_title_data->Nama_wisata }}
     </h2>
 
     <div class="container d-flex justify-content-center ">
-        <div class="image-list__item m-3">
-            <img src="https://i.ibb.co/6PX4SHg/Batu-Mahasur3.jpg" />
-        </div>
 
-        <div class="image-list__item  m-3">
-            <img src="https://i.ibb.co/kcyyd4n/Batu-Mahasur2.jpg" />
-        </div>
-
-        <div class="image-list__item  m-3">
-            <img src="https://i.ibb.co/MC8TmgY/Batu-Mahasur.jpg" />
-        </div>
+        @foreach ($get_foto_data as $item)
+            <div class="image-list__item m-3">
+                <img src="{{ asset('images/' . $item->Foto) }}" />
+            </div>
+        @endforeach
         <div class="clearfix"></div>
     </div>
 

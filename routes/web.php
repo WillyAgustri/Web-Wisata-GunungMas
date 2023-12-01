@@ -1,21 +1,33 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClientDetailController;
+use App\Http\Controllers\ClientDetailGaleriController;
+use App\Http\Controllers\ClientGaleriController;
+use App\Http\Controllers\ClientHomeController;
+use App\Http\Controllers\ClientKontakController;
+use App\Http\Controllers\ClientTentangController;
+use App\Http\Controllers\ClientWisataController;
+use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\HotelController;
+use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PesanController;
+use App\Http\Controllers\TentangController;
 use App\Http\Controllers\WisataController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('home', 'home')->name('home');
 // User Route
-Route::view('home/wisata', 'wisata')->name('wisata');
-Route::view('home/galeri', 'galeri')->name('galeri');
-Route::view('home/wisata/detail', 'detail_wisata')->name('detail_wisata');
-Route::view('home/kontak', 'contact')->name('contact');
-Route::view('home/tentang', 'tentang')->name('tentang');
-Route::view('home/galeri/detail', 'detail-galeri')->name('detail-galeri');
+Route::resource('/', ClientHomeController::class)->names('home');
+Route::resource('home/wisata', ClientWisataController::class)->names('home.wisata');
+Route::get('home/wisata/detail/{id_wisata}', [ClientDetailController::class, 'index'])->name('wisata.detail');
+Route::get('home/galeri/detail/{id_wisata}', [ClientDetailGaleriController::class, 'index'])->name('galeri.detail');
+Route::resource('home/galeri', ClientGaleriController::class)->names('home.galeri');
+Route::resource('home/tentang', ClientTentangController::class)->names('home.tentang');
+Route::resource('home/kontak', ClientKontakController::class)->names('home.kontak');
 
 // Login Route
-Route::get('', [LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::resource('login', LoginController::class);
 
 // Admin Route
@@ -38,22 +50,27 @@ Route::group(['middleware' => ['CekLoginUser']], function () {
     Route::get('dashboard/wisata/{id_wisata}/edit', [WisataController::class, 'edit_index'])->name('edit-wisata');
     Route::view('dashboard/wisata/tambah', 'dashboard.kelola_wisata.tambah-wisata')->name('tambah-wisata');
     Route::resource('dashboard/wisata', WisataController::class)->names('dashboard.wisata');
+
+    // CRUD Galeri
+    Route::get('dashboard/galeri/{id_galeri}/edit', [GaleriController::class, 'edit_index'])->name('edit-galeri');
+    Route::get('dashboard/galeri/tambah', [GaleriController::class, 'tambah_index'])->name('tambah-galeri');
+    Route::resource('dashboard/galeri', GaleriController::class)->names('dashboard.galeri');
+
+    // CRUD Tentang
+    Route::get('dashboard/tentang/{id_tentang}/edit', [TentangController::class, 'edit_index'])->name('edit-tentang');
+    Route::view('dashboard/tentang/tambah', 'dashboard.kelola_tentang.tambah-tentang')->name('tambah-tentang');
+    Route::resource('dashboard/tentang', TentangController::class)->names('dashboard.tentang');
+
+    // CRUD Kontak
+    Route::get('dashboard/kontak/{id_kontak}/edit', [KontakController::class, 'edit_index'])->name('edit-kontak');
+    Route::resource('dashboard/kontak', KontakController::class)->names('dashboard.kontak');
+
+    // CRUD hotel
+    Route::get('dashboard/hotel/{id_hotel}/edit', [HotelController::class, 'edit_index'])->name('edit-hotel');
+    Route::view('dashboard/hotel/tambah', 'dashboard.kelola_hotel.tambah-hotel')->name('tambah-hotel');
+    Route::resource('dashboard/hotel', HotelController::class)->names('dashboard.hotel');
+
+    // CRUD Pesan
+    Route::get('dashboard/pesan/{id_pesan}/edit', [PesanController::class, 'edit_index'])->name('edit-pesan');
+    Route::resource('dashboard/pesan', PesanController::class)->names('dashboard.pesan');
 });
-
-// CRUD Galeri
-Route::view('dashboard/galeri/tambah', 'dashboard.kelola_galeri.tambah-galeri')->name('tambah-galeri');
-Route::view('dashboard/galeri/edit', 'dashboard.kelola_galeri.edit-galeri')->name('edit-galeri');
-
-// CRUD Tentang
-Route::view('dashboard/tentang/tambah', 'dashboard.kelola_tentang.tambah-tentang')->name('tambah-tentang');
-Route::view('dashboard/tentang/edit', 'dashboard.kelola_tentang.edit-tentang')->name('edit-tentang');
-
-// CRUD Kontak
-Route::view('dashboard/kontak/edit', 'dashboard.kelola_kontak.edit-kontak')->name('edit-kontak');
-
-// CRUD hotel
-Route::view('dashboard/hotel/tambah', 'dashboard.kelola_hotel.tambah-hotel')->name('tambah-hotel');
-Route::view('dashboard/hotel/edit', 'dashboard.kelola_hotel.edit-hotel')->name('edit-hotel');
-
-// CRUD Pesan
-Route::view('dashboard/pesan/edit', 'dashboard.pesan.edit-pesan')->name('edit-pesan');
